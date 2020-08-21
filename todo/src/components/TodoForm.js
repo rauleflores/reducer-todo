@@ -2,22 +2,28 @@ import React, { useState } from "react";
 
 const TodoForm = (props) => {
 	console.log("TodoForm props:", props);
-	const [formState, setFormState] = useState({
-		item: "",
-		completed: false,
-		editing: false,
-	});
+	const [todo, setTodo] = useState([
+		{
+			item: "",
+			completed: false,
+			editing: false,
+		},
+	]);
 
 	const handleChanges = (e) => {
-		setFormState({
-			...formState,
+		setTodo({
+			...todo,
 			item: e.target.value,
 		});
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setFormState({
+		props.dispatch({
+			type: props.ADD_ITEM,
+			payload: todo,
+		});
+		setTodo({
 			item: "",
 		});
 	};
@@ -28,7 +34,7 @@ const TodoForm = (props) => {
 			<input
 				name="todo"
 				placeholder="Make a plan."
-				value={formState.item}
+				value={todo.item}
 				onChange={handleChanges}
 			/>
 			<button>Submit</button>

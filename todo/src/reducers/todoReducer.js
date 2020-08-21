@@ -18,11 +18,7 @@ export const initialState = [
 export const todoReducer = (state, action) => {
 	switch (action.type) {
 		case ADD_ITEM:
-			return {
-				...state,
-				title: action.payload,
-				editing: false,
-			};
+			return [...state, action.payload];
 		case TOGGLE_EDITING:
 			return {
 				...state,
