@@ -9,7 +9,7 @@ const TodoList = (props) => {
 				console.log("key:", key, "todo:", todo);
 				return (
 					<>
-						<p>
+						<p className={!todo.editing ? "todo completed" : "todo"}>
 							{key + 1}. {todo.item}{" "}
 							<span
 								className="completed"

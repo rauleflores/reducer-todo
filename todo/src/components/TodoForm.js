@@ -22,6 +22,7 @@ const TodoForm = (props) => {
 		});
 		setTodo({
 			item: "",
+			completed: false,
 		});
 	};
 
