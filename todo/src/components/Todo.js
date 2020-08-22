@@ -1,26 +1,17 @@
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
 import {
 	initialState,
 	todoReducer,
-	TOGGLE_EDITING,
+	TOGGLE_COMPLETED,
 	ADD_ITEM,
 } from "../reducers/todoReducer";
 
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 const Todo = () => {
-	const [newTodo, setNewTodo] = useState("");
 	const [state, dispatch] = useReducer(todoReducer, initialState);
-	console.log("state:", state);
-	console.log("dispatch", dispatch);
-
-	const stateObjArray = state;
-
-	console.log(stateObjArray);
-
-	const handleChanges = (e) => {
-		setNewTodo(e.target.value);
-	};
+	//console.log("state:", state);
+	//console.log("dispatch", dispatch);
 
 	return (
 		<div>
@@ -32,7 +23,7 @@ const Todo = () => {
 			<TodoList
 				todos={state}
 				dispatch={dispatch}
-				TOGGLE_EDITING={TOGGLE_EDITING}
+				TOGGLE_COMPLETED={TOGGLE_COMPLETED}
 			/>
 		</div>
 	);

@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 
 const TodoForm = (props) => {
-	console.log("TodoForm props:", props);
-	const [todo, setTodo] = useState([
-		{
-			item: "",
-			completed: false,
-			editing: false,
-		},
-	]);
+	//console.log("TodoForm props:", props);
+	const [todo, setTodo] = useState({
+		item: "",
+		completed: false,
+	});
 
 	const handleChanges = (e) => {
 		setTodo({
 			...todo,
-			item: e.target.value,
+			[e.target.name]: e.target.value,
 		});
 	};
 
@@ -32,7 +29,7 @@ const TodoForm = (props) => {
 		<form onSubmit={handleSubmit}>
 			<label htmlFor="todo">Todo:</label>
 			<input
-				name="todo"
+				name="item"
 				placeholder="Make a plan."
 				value={todo.item}
 				onChange={handleChanges}
